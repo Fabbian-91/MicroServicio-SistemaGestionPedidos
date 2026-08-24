@@ -8,18 +8,29 @@
 *.ear
 *.nar
 
-# Logs de JVM
+# Excepción necesaria para Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# JVM
 hs_err_pid*
 replay_pid*
+*.hprof
+*.pid
+*.pid.lock
+.attach_pid*
 
 
 # =========================================================
 # MAVEN
 # =========================================================
 
-# Directorios generados por Maven
+# Directorios generados
 target/
 **/target/
+
+# Archivos generados por Maven
+dependency-reduced-pom.xml
+.flattened-pom.xml
 
 # Maven release
 pom.xml.tag
@@ -28,23 +39,36 @@ pom.xml.versionsBackup
 pom.xml.next
 release.properties
 
-# Maven wrapper:
-# NO ignorar mvnw, mvnw.cmd ni .mvn/wrapper/
-# porque deben poder clonarse y ejecutarse en otra PC.
+# Maven Wrapper
+# Estos archivos SÍ deben versionarse:
+# mvnw
+# mvnw.cmd
+# .mvn/wrapper/maven-wrapper.properties
+# .mvn/wrapper/maven-wrapper.jar
+
+!.mvn/
+!.mvn/wrapper/
+!.mvn/wrapper/maven-wrapper.properties
+!.mvn/wrapper/maven-wrapper.jar
 
 
 # =========================================================
 # SPRING BOOT - CONFIGURACIÓN SENSIBLE
 # =========================================================
 
-# application.properties de los microservicios que contienen:
-# usuarios, contraseñas, tokens, claves, URLs privadas, etc.
+# Configuraciones particulares de los microservicios
+# que pueden contener usuarios, contraseñas,
+# tokens, claves o URLs privadas.
 
 cliente-service/src/main/resources/application.properties
 pedidos-service/src/main/resources/application.properties
 productos-service/src/main/resources/application.properties
 
-# Si posteriormente agregas más archivos locales/sensibles:
+
+# =========================================================
+# SPRING BOOT - PERFILES LOCALES / SECRETOS
+# =========================================================
+
 **/application-local.properties
 **/application-dev.properties
 **/application-secret.properties
@@ -52,31 +76,44 @@ productos-service/src/main/resources/application.properties
 
 **/application-local.yml
 **/application-local.yaml
+
 **/application-dev.yml
 **/application-dev.yaml
+
 **/application-secret.yml
 **/application-secret.yaml
+
 **/application-secrets.yml
 **/application-secrets.yaml
 
 
 # =========================================================
-# VARIABLES DE ENTORNO / SECRETOS
+# VARIABLES DE ENTORNO
 # =========================================================
 
 .env
 .env.*
-!.env.example
-
 *.env
 
-# Archivos comunes de secretos
+# Permitir ejemplo de variables
+!.env.example
+
+
+# =========================================================
+# SECRETOS
+# =========================================================
+
 *.secret
 *.secrets
+
 secrets/
 **/secrets/
 
-# Claves privadas / certificados sensibles
+
+# =========================================================
+# CERTIFICADOS / CLAVES
+# =========================================================
+
 *.pem
 *.key
 *.p12
@@ -104,7 +141,7 @@ out/
 
 
 # =========================================================
-# ECLIPSE / STS
+# ECLIPSE / SPRING TOOL SUITE
 # =========================================================
 
 .classpath
@@ -121,9 +158,6 @@ out/
 # =========================================================
 
 .vscode/
-
-# Si eventualmente quieres compartir configuraciones útiles de VS Code,
-# se pueden hacer excepciones específicas.
 
 
 # =========================================================
@@ -142,6 +176,7 @@ out/
 # =========================================================
 
 *.log
+
 logs/
 **/logs/
 
@@ -150,7 +185,82 @@ log/
 
 
 # =========================================================
-# SISTEMA OPERATIVO - WINDOWS
+# TESTS / REPORTES
+# =========================================================
+
+coverage/
+**/coverage/
+
+jacoco.exec
+**/jacoco.exec
+
+**/site/jacoco/
+
+surefire-reports/
+**/surefire-reports/
+
+failsafe-reports/
+**/failsafe-reports/
+
+test-output/
+**/test-output/
+
+
+# =========================================================
+# DOCKER
+# =========================================================
+
+# Configuraciones locales de Docker Compose
+docker-compose.override.yml
+docker-compose.override.yaml
+
+compose.override.yml
+compose.override.yaml
+
+# Archivos locales generados por Docker
+.docker/
+
+# NO ignorar normalmente:
+# Dockerfile
+# docker-compose.yml
+# compose.yml
+# compose.yaml
+
+
+# =========================================================
+# BASES DE DATOS LOCALES
+# =========================================================
+
+*.db
+*.sqlite
+*.sqlite3
+
+
+# =========================================================
+# DATOS DE DOCKER / BASES DE DATOS
+# =========================================================
+
+# Mejor usar nombres específicos y no "data/"
+# para evitar ignorar datos válidos de la aplicación.
+
+docker-data/
+**/docker-data/
+
+mysql-data/
+**/mysql-data/
+
+postgres-data/
+**/postgres-data/
+
+mongodb-data/
+**/mongodb-data/
+
+redis-data/
+**/redis-data/
+
+
+# =========================================================
+# WINDOWS
 # =========================================================
 
 Thumbs.db
@@ -162,7 +272,7 @@ $RECYCLE.BIN/
 
 
 # =========================================================
-# SISTEMA OPERATIVO - MACOS
+# MACOS
 # =========================================================
 
 .DS_Store
@@ -170,9 +280,12 @@ $RECYCLE.BIN/
 .LSOverride
 ._*
 
+.Spotlight-V100
+.Trashes
+
 
 # =========================================================
-# SISTEMA OPERATIVO - LINUX
+# LINUX
 # =========================================================
 
 *~
@@ -187,6 +300,7 @@ $RECYCLE.BIN/
 
 *.tmp
 *.temp
+
 *.swp
 *.swo
 
@@ -194,60 +308,130 @@ $RECYCLE.BIN/
 *.backup
 *.old
 
+*.orig
+*.rej
+
 .cache/
 **/.cache/
 
-
-# =========================================================
-# COBERTURA / TESTS
-# =========================================================
-
-coverage/
-**/coverage/
-
-jacoco.exec
-**/jacoco.exec
-
-**/site/jacoco/
+tmp/
+temp/
 
 
 # =========================================================
-# DOCKER
-# =========================================================
-
-# Variables sensibles utilizadas por Docker
-docker-compose.override.yml
-
-# No ignores Dockerfile ni docker-compose.yml normalmente.
-
-
-# =========================================================
-# BASES DE DATOS LOCALES
-# =========================================================
-
-*.db
-*.sqlite
-*.sqlite3
-
-data/
-**/data/
-
-
-# =========================================================
-# ARCHIVOS COMPRIMIDOS / GENERADOS
+# ARCHIVOS COMPRIMIDOS
 # =========================================================
 
 *.zip
 *.tar
 *.tar.gz
+*.tgz
 *.rar
+*.7z
 
 
 # =========================================================
-# OTROS
+# ARCHIVOS GENERADOS / METADATOS
 # =========================================================
 
 .metadata/
 bin/
-tmp/
-temp/
+
+
+# =========================================================
+# NODE / FRONTEND
+# =========================================================
+# Útil si posteriormente agregas React, Angular,
+# Vue u otro frontend.
+
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+
+dist/
+build/
+
+.next/
+.nuxt/
+.vite/
+
+
+# =========================================================
+# FRONTEND - VARIABLES
+# =========================================================
+
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+
+# =========================================================
+# SONARQUBE
+# =========================================================
+
+.scannerwork/
+**/.scannerwork/
+
+
+# =========================================================
+# IDE / EDITORES - TEMPORALES
+# =========================================================
+
+*.code-workspace
+
+*.sublime-project
+*.sublime-workspace
+
+
+# =========================================================
+# OTROS ARCHIVOS LOCALES
+# =========================================================
+
+local.properties
+
+
+# =========================================================
+# BACKUPS
+# =========================================================
+
+backup/
+backups/
+
+**/backup/
+**/backups/
+
+
+# =========================================================
+# NOTAS
+# =========================================================
+
+# Archivos que normalmente SÍ deben subirse:
+#
+# Dockerfile
+# docker-compose.yml
+# compose.yml
+# pom.xml
+# mvnw
+# mvnw.cmd
+# .mvn/wrapper/*
+# README.md
+# .env.example
+#
+# No deben subirse:
+#
+# .env
+# contraseñas
+# tokens
+# certificados privados
+# application.properties con secretos
+# target/
+# logs
+# archivos de IDE
