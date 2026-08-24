@@ -1,0 +1,253 @@
+# =========================================================
+# JAVA
+# =========================================================
+
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Logs de JVM
+hs_err_pid*
+replay_pid*
+
+
+# =========================================================
+# MAVEN
+# =========================================================
+
+# Directorios generados por Maven
+target/
+**/target/
+
+# Maven release
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Maven wrapper:
+# NO ignorar mvnw, mvnw.cmd ni .mvn/wrapper/
+# porque deben poder clonarse y ejecutarse en otra PC.
+
+
+# =========================================================
+# SPRING BOOT - CONFIGURACIÓN SENSIBLE
+# =========================================================
+
+# application.properties de los microservicios que contienen:
+# usuarios, contraseñas, tokens, claves, URLs privadas, etc.
+
+cliente-service/src/main/resources/application.properties
+pedidos-service/src/main/resources/application.properties
+productos-service/src/main/resources/application.properties
+
+# Si posteriormente agregas más archivos locales/sensibles:
+**/application-local.properties
+**/application-dev.properties
+**/application-secret.properties
+**/application-secrets.properties
+
+**/application-local.yml
+**/application-local.yaml
+**/application-dev.yml
+**/application-dev.yaml
+**/application-secret.yml
+**/application-secret.yaml
+**/application-secrets.yml
+**/application-secrets.yaml
+
+
+# =========================================================
+# VARIABLES DE ENTORNO / SECRETOS
+# =========================================================
+
+.env
+.env.*
+!.env.example
+
+*.env
+
+# Archivos comunes de secretos
+*.secret
+*.secrets
+secrets/
+**/secrets/
+
+# Claves privadas / certificados sensibles
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# SSH
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+
+# =========================================================
+# INTELLIJ IDEA
+# =========================================================
+
+.idea/
+*.iws
+*.iml
+*.ipr
+
+out/
+
+
+# =========================================================
+# ECLIPSE / STS
+# =========================================================
+
+.classpath
+.project
+.settings/
+.factorypath
+
+.springBeans
+.sts4-cache/
+
+
+# =========================================================
+# VISUAL STUDIO CODE
+# =========================================================
+
+.vscode/
+
+# Si eventualmente quieres compartir configuraciones útiles de VS Code,
+# se pueden hacer excepciones específicas.
+
+
+# =========================================================
+# NETBEANS
+# =========================================================
+
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+
+# =========================================================
+# LOGS
+# =========================================================
+
+*.log
+logs/
+**/logs/
+
+log/
+**/log/
+
+
+# =========================================================
+# SISTEMA OPERATIVO - WINDOWS
+# =========================================================
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+$RECYCLE.BIN/
+
+
+# =========================================================
+# SISTEMA OPERATIVO - MACOS
+# =========================================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+
+# =========================================================
+# SISTEMA OPERATIVO - LINUX
+# =========================================================
+
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+
+# =========================================================
+# ARCHIVOS TEMPORALES
+# =========================================================
+
+*.tmp
+*.temp
+*.swp
+*.swo
+
+*.bak
+*.backup
+*.old
+
+.cache/
+**/.cache/
+
+
+# =========================================================
+# COBERTURA / TESTS
+# =========================================================
+
+coverage/
+**/coverage/
+
+jacoco.exec
+**/jacoco.exec
+
+**/site/jacoco/
+
+
+# =========================================================
+# DOCKER
+# =========================================================
+
+# Variables sensibles utilizadas por Docker
+docker-compose.override.yml
+
+# No ignores Dockerfile ni docker-compose.yml normalmente.
+
+
+# =========================================================
+# BASES DE DATOS LOCALES
+# =========================================================
+
+*.db
+*.sqlite
+*.sqlite3
+
+data/
+**/data/
+
+
+# =========================================================
+# ARCHIVOS COMPRIMIDOS / GENERADOS
+# =========================================================
+
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+
+# =========================================================
+# OTROS
+# =========================================================
+
+.metadata/
+bin/
+tmp/
+temp/
