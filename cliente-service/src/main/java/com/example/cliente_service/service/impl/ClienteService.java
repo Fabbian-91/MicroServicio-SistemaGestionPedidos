@@ -106,11 +106,11 @@ public class ClienteService implements IClienteService {
      */
     @Override
     public List<ClienteResponseDto> listarTodos() {
+        //Metodo demostración
+        List<ClienteResponseDto> response=clienteRepository.findAll().stream()
+                .map(clienteMapper::toResponse).toList();
 
-        return clienteRepository.findAll()
-                .stream()
-                .map(clienteMapper::toResponse)
-                .toList();
+        return response;
     }
 
     /**

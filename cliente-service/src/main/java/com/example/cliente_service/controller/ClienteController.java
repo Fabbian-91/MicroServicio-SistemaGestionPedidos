@@ -77,15 +77,10 @@ public class ClienteController implements ICrudController<
     @Override
     @GetMapping
     public ResponseEntity<ApiResponse<List<ClienteResponseDto>>> listarTodos() {
-
-        List<ClienteResponseDto> clientes = clienteService.listarTodos();
-
-        return ResponseEntity.ok(
-                ApiResponse.success(
-                        "Clientes obtenidos correctamente",
-                        clientes
-                )
-        );
+        //Metodo demostración
+        List<ClienteResponseDto> response=clienteService.listarTodos();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(ApiResponse.success("Cliente obtenidos correctamente",response));
     }
 
     /**
